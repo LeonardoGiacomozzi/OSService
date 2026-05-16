@@ -3,8 +3,6 @@ name: OSService CI/CD
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -27,7 +25,11 @@ jobs:
 
       - name: Sonar Begin
         run: |
-          dotnet-sonarscanner begin /k:"FiapOficina_OSService" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
+          dotnet-sonarscanner begin /k:"FiapOficina_OSService" \
+            /o:"${{ secrets.SONAR_ORGANIZATION }}" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
 
       - name: Build
         run: dotnet build OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
@@ -79,10 +81,20 @@ jobs:
           fi
           echo "rds_endpoint=$RDS_ENDPOINT" >> $GITHUB_OUTPUT
 
+      - name: Get SQS URL
+        id: sqs
+        run: |
+          SQS_URL=$(aws sqs get-queue-url --queue-name "order-opened-queue" --query "QueueUrl" --output text)
+          if [ -z "$SQS_URL" ] || [ "$SQS_URL" == "None" ]; then
+            echo "ERROR: SQS Queue 'order-opened-queue' not found!"
+            exit 1
+          fi
+          echo "sqs_url=$SQS_URL" >> $GITHUB_OUTPUT
+
       - name: Deploy to EKS
         env:
           DB_CONNECTION_STRING: Host=${{ steps.rds.outputs.rds_endpoint }};Port=5432;Database=${{ secrets.DB_NAME }};Username=postgres;Password=${{ secrets.DB_PASSWORD }}
-          MESSAGING_CONNECTION: ${{ secrets.MESSAGING_CONNECTION }}
+          MESSAGING_CONNECTION: ${{ steps.sqs.outputs.sqs_url }}
         run: |
           envsubst < OSService/k8s/deployment.yaml | kubectl apply -f -
           kubectl apply -f OSService/k8s/service.yaml
