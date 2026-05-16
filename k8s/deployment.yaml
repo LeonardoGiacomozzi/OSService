@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: os-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: os-service
+  template:
+    metadata:
+      labels:
+        app: os-service
+    spec:
+      containers:
+      - name: os-service
+        image: fiap-oficina-os-service:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ConnectionStrings__postgres
+          value: "${DB_CONNECTION_STRING}"
+        - name: ConnectionStrings__messaging
+          value: "${MESSAGING_CONNECTION}"

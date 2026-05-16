@@ -1,0 +1,89 @@
+name: OSService CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      
+      - name: Restore
+        run: dotnet restore OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj
+
+      - name: Install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Sonar Begin
+        run: |
+          dotnet-sonarscanner begin /k:"FiapOficina_OSService" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
+
+      - name: Build
+        run: dotnet build OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test OSService/FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --results-directory ./TestResults
+
+      - name: Sonar End
+        run: dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build, tag, and push image to Amazon ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: fiap-oficina-os-service
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REGISTRY/$ECR_REPOSITORY:latest .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+
+      - name: Update kubeconfig
+        run: aws eks update-kubeconfig --name ${{ vars.CLUSTER_NAME }} --region us-east-1
+
+      - name: Get RDS Endpoint
+        id: rds
+        run: |
+          RDS_ENDPOINT=$(aws rds describe-db-instances --query "DBInstances[?TagList[?Key=='Name' && Value=='fiap-oficina-os-db']] | [0].Endpoint.Address" --output text)
+          if [ -z "$RDS_ENDPOINT" ] || [ "$RDS_ENDPOINT" == "None" ]; then
+            echo "ERROR: RDS Instance not found by tag 'fiap-oficina-os-db'!"
+            exit 1
+          fi
+          echo "rds_endpoint=$RDS_ENDPOINT" >> $GITHUB_OUTPUT
+
+      - name: Deploy to EKS
+        env:
+          DB_CONNECTION_STRING: Host=${{ steps.rds.outputs.rds_endpoint }};Port=5432;Database=${{ secrets.DB_NAME }};Username=postgres;Password=${{ secrets.DB_PASSWORD }}
+          MESSAGING_CONNECTION: ${{ secrets.MESSAGING_CONNECTION }}
+        run: |
+          envsubst < OSService/k8s/deployment.yaml | kubectl apply -f -
+          kubectl apply -f OSService/k8s/service.yaml
+          kubectl set image deployment/os-service os-service=${{ steps.login-ecr.outputs.registry }}/fiap-oficina-os-service:${{ github.sha }}
