@@ -35,7 +35,7 @@ jobs:
         run: dotnet build FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --results-directory ./TestResults
+        run: dotnet test FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release --collect:"XPlat Code Coverage;Format=opencover" --results-directory ./TestResults
 
       - name: Sonar End
         run: dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
