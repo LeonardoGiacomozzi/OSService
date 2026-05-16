@@ -32,7 +32,7 @@ public class ServiceOrderRepository : IServiceOrderRepository
 
     public async Task UpdateAsync(ServiceOrder order)
     {
-        _context.Entry(order).State = EntityState.Modified;
+        _context.ServiceOrders.Update(order);
         await _context.SaveChangesAsync();
     }
 }

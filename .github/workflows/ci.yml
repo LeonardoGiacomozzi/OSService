@@ -1,0 +1,49 @@
+name: OSService CI
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
+      - name: Install SonarScanner
+        run: dotnet tool install --global dotnet-sonarscanner
+
+      - name: Install JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Restore
+        run: dotnet restore FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj
+
+      - name: Sonar Begin
+        run: |
+          dotnet-sonarscanner begin /k:"LeonardoGiacomozzi_OSService" \
+            /o:"${{ secrets.SONAR_ORGANIZATION }}" \
+            /d:sonar.token="${{ secrets.SONAR_TOKEN }}" \
+            /d:sonar.host.url="https://sonarcloud.io" \
+            /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
+
+      - name: Build
+        run: dotnet build FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release --collect:"XPlat Code Coverage;Format=opencover" --results-directory ./TestResults
+
+      - name: Sonar End
+        run: dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

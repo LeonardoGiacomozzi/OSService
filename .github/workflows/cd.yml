@@ -1,0 +1,56 @@
+name: OSService CD
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and Push Docker Image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build -t $ECR_REGISTRY/fiap-oficina-os-service:$IMAGE_TAG -f Dockerfile .
+          docker push $ECR_REGISTRY/fiap-oficina-os-service:$IMAGE_TAG
+          docker tag $ECR_REGISTRY/fiap-oficina-os-service:$IMAGE_TAG $ECR_REGISTRY/fiap-oficina-os-service:latest
+          docker push $ECR_REGISTRY/fiap-oficina-os-service:latest
+
+      - name: Update Kubeconfig
+        run: aws eks update-kubeconfig --name fiap-oficina-cluster --region us-east-1
+
+      - name: Fetch RDS and SQS Info
+        run: |
+          RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier fiap-oficina-os-db --query 'DBInstances[0].Endpoint.Address' --output text)
+          SQS_URL=$(aws sqs get-queue-url --queue-name ServiceOrderQueue --query 'QueueUrl' --output text)
+          echo "RDS_ENDPOINT=$RDS_ENDPOINT" >> $GITHUB_ENV
+          echo "SQS_URL=$SQS_URL" >> $GITHUB_ENV
+
+      - name: Deploy to EKS
+        run: |
+          sed -i "s|DB_HOST_VALUE|$RDS_ENDPOINT|g" k8s/deployment.yml
+          sed -i "s|SQS_URL_VALUE|$SQS_URL|g" k8s/deployment.yml
+          sed -i "s|DB_PASSWORD_VALUE|${{ secrets.DB_PASSWORD }}|g" k8s/deployment.yml
+          kubectl apply -f k8s/deployment.yml
+          kubectl apply -f k8s/service.yml
+          kubectl rollout restart deployment os-service
