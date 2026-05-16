@@ -6,6 +6,7 @@ using MassTransit;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
+using FluentAssertions;
 
 namespace FiapOficina.OSService.Tests;
 

@@ -1,7 +1,8 @@
 using FiapOficina.OSService.Api.Consumers;
 using FiapOficina.OSService.Api.Infrastructure;
 using FiapOficina.OSService.Api.Models;
-using FiapOficina.OSService.Api.Saga;
+using Amazon.SQS;
+using Amazon.SimpleNotificationService;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
@@ -34,7 +35,8 @@ builder.Services.AddMassTransit(x =>
         { 
             if (!string.IsNullOrEmpty(sqsUrl))
             {
-                h.ServiceUrl(new Uri(sqsUrl));
+                h.Config(new AmazonSQSConfig { ServiceURL = sqsUrl });
+                h.Config(new AmazonSimpleNotificationServiceConfig { ServiceURL = sqsUrl });
             }
         });
         cfg.ConfigureEndpoints(context);
