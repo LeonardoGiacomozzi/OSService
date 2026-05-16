@@ -18,7 +18,7 @@ jobs:
           dotnet-version: 9.0.x
       
       - name: Restore
-        run: dotnet restore OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj
+        run: dotnet restore FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj
 
       - name: Install SonarScanner
         run: dotnet tool install --global dotnet-sonarscanner
@@ -32,10 +32,10 @@ jobs:
             /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
 
       - name: Build
-        run: dotnet build OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
+        run: dotnet build FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test OSService/FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --results-directory ./TestResults
+        run: dotnet test FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release /p:CollectCoverage=true /p:CoverletOutputFormat=opencover --results-directory ./TestResults
 
       - name: Sonar End
         run: dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
@@ -96,6 +96,6 @@ jobs:
           DB_CONNECTION_STRING: Host=${{ steps.rds.outputs.rds_endpoint }};Port=5432;Database=${{ secrets.DB_NAME }};Username=postgres;Password=${{ secrets.DB_PASSWORD }}
           MESSAGING_CONNECTION: ${{ steps.sqs.outputs.sqs_url }}
         run: |
-          envsubst < OSService/k8s/deployment.yaml | kubectl apply -f -
-          kubectl apply -f OSService/k8s/service.yaml
+          envsubst < k8s/deployment.yaml | kubectl apply -f -
+          kubectl apply -f k8s/service.yaml
           kubectl set image deployment/os-service os-service=${{ steps.login-ecr.outputs.registry }}/fiap-oficina-os-service:${{ github.sha }}
