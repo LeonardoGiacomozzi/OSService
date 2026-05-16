@@ -27,7 +27,7 @@ jobs:
           java-version: '17'
 
       - name: Restore
-        run: dotnet restore OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj
+        run: dotnet restore FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj
 
       - name: Sonar Begin
         run: |
@@ -38,10 +38,10 @@ jobs:
             /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
 
       - name: Build
-        run: dotnet build OSService/FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
+        run: dotnet build FiapOficina.OSService/src/FiapOficina.OSService.Api/FiapOficina.OSService.Api.csproj --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test OSService/FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release --collect:"XPlat Code Coverage;Format=opencover" --results-directory ./TestResults
+        run: dotnet test FiapOficina.OSService/tests/FiapOficina.OSService.Tests/FiapOficina.OSService.Tests.csproj --configuration Release --collect:"XPlat Code Coverage;Format=opencover" --results-directory ./TestResults
 
       - name: Sonar End
         run: dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
