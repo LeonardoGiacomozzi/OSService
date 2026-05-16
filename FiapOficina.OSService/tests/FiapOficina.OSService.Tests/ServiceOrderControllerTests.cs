@@ -48,4 +48,35 @@ public class ServiceOrderControllerTests
         _repositoryMock.Verify(r => r.AddAsync(It.IsAny<ServiceOrder>()), Times.Once);
         _busMock.Verify(b => b.Publish(It.IsAny<OrderOpened>(), default), Times.Once);
     }
+
+    [Fact]
+    public async Task GetOrder_ShouldReturnOk_WhenOrderExists()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, CustomerName = "Test" };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.GetOrder(orderId);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+        okResult.Value.Should().BeEquivalentTo(order);
+    }
+
+    [Fact]
+    public async Task GetOrder_ShouldReturnNotFound_WhenOrderDoesNotExist()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync((ServiceOrder)null!);
+
+        // Act
+        var result = await _controller.GetOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<NotFoundResult>();
+    }
 }

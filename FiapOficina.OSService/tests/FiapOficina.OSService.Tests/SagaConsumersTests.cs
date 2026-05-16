@@ -84,4 +84,62 @@ public class SagaConsumersTests
         order.Status.Should().Be(ServiceOrderStatus.PaymentFailed);
         _busMock.Verify(b => b.Publish(It.IsAny<OrderCancelled>(), default), Times.Once);
     }
+
+    [Fact]
+    public async Task ExecutionFinishedConsumer_ShouldUpdateStatusToCompleted_WhenSuccess()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Approved };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        var consumer = new ExecutionFinishedConsumer(_repositoryMock.Object, new Mock<ILogger<ExecutionFinishedConsumer>>().Object);
+        var contextMock = new Mock<ConsumeContext<ExecutionFinished>>();
+        contextMock.Setup(c => c.Message).Returns(new ExecutionFinished(orderId, true, "Done"));
+
+        // Act
+        await consumer.Consume(contextMock.Object);
+
+        // Assert
+        order.Status.Should().Be(ServiceOrderStatus.Completed);
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+    }
+
+    [Fact]
+    public async Task OrderCancelledConsumer_ShouldUpdateStatusToCancelled()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Opened };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        var consumer = new OrderCancelledConsumer(_repositoryMock.Object, new Mock<ILogger<OrderCancelledConsumer>>().Object);
+        var contextMock = new Mock<ConsumeContext<OrderCancelled>>();
+        contextMock.Setup(c => c.Message).Returns(new OrderCancelled(orderId, "Test Reason"));
+
+        // Act
+        await consumer.Consume(contextMock.Object);
+
+        // Assert
+        order.Status.Should().Be(ServiceOrderStatus.Cancelled);
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+    }
+
+    [Fact]
+    public async Task Consumers_ShouldNotUpdate_WhenOrderNotFound()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync((ServiceOrder)null!);
+
+        var budgetConsumer = new BudgetCreatedConsumer(_repositoryMock.Object, _budgetLoggerMock.Object);
+        var contextMock = new Mock<ConsumeContext<BudgetCreated>>();
+        contextMock.Setup(c => c.Message).Returns(new BudgetCreated(orderId, Guid.NewGuid(), 100));
+
+        // Act
+        await budgetConsumer.Consume(contextMock.Object);
+
+        // Assert
+        _repositoryMock.Verify(r => r.UpdateAsync(It.IsAny<ServiceOrder>()), Times.Never);
+    }
 }
