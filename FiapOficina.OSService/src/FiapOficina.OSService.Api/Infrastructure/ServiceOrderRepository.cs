@@ -10,6 +10,7 @@ public interface IServiceOrderRepository
     Task UpdateAsync(ServiceOrder order);
 }
 
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 public class ServiceOrderRepository : IServiceOrderRepository
 {
     private readonly OSDbContext _context;

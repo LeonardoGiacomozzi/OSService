@@ -12,9 +12,17 @@ spec:
       labels:
         app: os-service
     spec:
+      automountServiceAccountToken: false
       containers:
       - name: os-service
         image: fiap-oficina-os-service:latest
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
         ports:
         - containerPort: 8080
         env:
