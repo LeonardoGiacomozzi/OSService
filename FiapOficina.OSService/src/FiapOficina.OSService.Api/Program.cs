@@ -81,6 +81,17 @@ using (var scope = app.Services.CreateScope())
     var dbContext = scope.ServiceProvider.GetRequiredService<OSDbContext>();
     dbContext.Database.EnsureCreated();
     
+    // Garante que a tabela Users exista caso o banco já existisse na AWS
+    dbContext.Database.ExecuteSqlRaw(@"
+        CREATE TABLE IF NOT EXISTS ""Users"" (
+            ""Id"" UUID PRIMARY KEY,
+            ""Username"" TEXT NOT NULL,
+            ""Name"" TEXT NOT NULL,
+            ""Role"" TEXT NOT NULL,
+            ""Password"" TEXT NOT NULL
+        );
+    ");
+    
     if (!dbContext.Users.Any())
     {
         dbContext.Users.Add(new FiapOficina.OSService.Api.Models.User
