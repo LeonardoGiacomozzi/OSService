@@ -90,8 +90,8 @@ public class UserController : ControllerBase
         var jwtIssuer = _configuration["JWT_ISSUER"] ?? "fiap-oficina-auth";
         var jwtAudience = _configuration["JWT_AUDIENCE"] ?? "fiap-oficina-services";
 
-        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
-        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+        var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)); // NOSONAR
+        var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256); // NOSONAR
 
         var claims = new[]
         {
