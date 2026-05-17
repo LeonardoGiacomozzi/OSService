@@ -20,7 +20,7 @@ builder.Services.AddScoped<IServiceOrderRepository, ServiceOrderRepository>();
 var authEnabled = builder.Configuration.GetValue<bool>("Authentication:Enabled");
 if (authEnabled)
 {
-    var jwtKey = builder.Configuration["JWT_KEY"] ?? "your-very-long-secret-key-shared-between-gateway-and-services";
+    var jwtKey = builder.Configuration["JWT_KEY"] ?? throw new InvalidOperationException("JWT_KEY is not configured.");
     var jwtIssuer = builder.Configuration["JWT_ISSUER"] ?? "fiap-oficina-auth";
     var jwtAudience = builder.Configuration["JWT_AUDIENCE"] ?? "fiap-oficina-services";
 

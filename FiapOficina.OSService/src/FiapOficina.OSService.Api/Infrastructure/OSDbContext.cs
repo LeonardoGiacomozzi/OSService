@@ -16,6 +16,8 @@ public class OSDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ServiceOrder>().HasKey(e => e.Id);
+        modelBuilder.Entity<OrderState>().HasKey(e => e.CorrelationId);
+        modelBuilder.Entity<User>().HasKey(e => e.Id);
         
         // Configuração da Saga para o MassTransit
         modelBuilder.AddInboxStateEntity();

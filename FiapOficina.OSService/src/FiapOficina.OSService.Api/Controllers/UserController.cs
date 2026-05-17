@@ -86,7 +86,7 @@ public class UserController : ControllerBase
 
     private string GenerateToken(string username, string role)
     {
-        var jwtKey = _configuration["JWT_KEY"] ?? "your-very-long-secret-key-shared-between-gateway-and-services";
+        var jwtKey = _configuration["JWT_KEY"] ?? throw new InvalidOperationException("JWT_KEY is not configured.");
         var jwtIssuer = _configuration["JWT_ISSUER"] ?? "fiap-oficina-auth";
         var jwtAudience = _configuration["JWT_AUDIENCE"] ?? "fiap-oficina-services";
 

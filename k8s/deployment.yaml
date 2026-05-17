@@ -30,3 +30,11 @@ spec:
           value: "${DB_CONNECTION_STRING}"
         - name: ConnectionStrings__messaging
           value: "${MESSAGING_CONNECTION}"
+        - name: Authentication__Enabled
+          value: "true"
+        - name: JWT_KEY
+          value: "${JWT_KEY}"
+        - name: JWT_ISSUER
+          value: "${JWT_ISSUER}"
+        - name: JWT_AUDIENCE
+          value: "${JWT_AUDIENCE}"
