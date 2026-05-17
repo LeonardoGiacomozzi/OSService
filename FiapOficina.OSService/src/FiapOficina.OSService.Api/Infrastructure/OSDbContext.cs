@@ -11,6 +11,7 @@ public class OSDbContext : DbContext
 
     public DbSet<ServiceOrder> ServiceOrders { get; set; }
     public DbSet<OrderState> OrderStates { get; set; }
+    public DbSet<User> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

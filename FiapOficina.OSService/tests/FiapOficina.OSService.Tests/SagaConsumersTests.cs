@@ -162,4 +162,24 @@ public class SagaConsumersTests
         // Assert
         _repositoryMock.Verify(r => r.UpdateAsync(It.IsAny<ServiceOrder>()), Times.Never);
     }
+
+    [Fact]
+    public async Task ExecutionStartedConsumer_ShouldUpdateStatusToInProgress()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Approved };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        var consumer = new ExecutionStartedConsumer(_repositoryMock.Object, new Mock<ILogger<ExecutionStartedConsumer>>().Object);
+        var contextMock = new Mock<ConsumeContext<ExecutionStarted>>();
+        contextMock.Setup(c => c.Message).Returns(new ExecutionStarted(orderId));
+
+        // Act
+        await consumer.Consume(contextMock.Object);
+
+        // Assert
+        order.Status.Should().Be(ServiceOrderStatus.InProgress);
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+    }
 }

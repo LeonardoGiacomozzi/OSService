@@ -52,6 +52,7 @@ jobs:
           DB_CONN="Server=$RDS_ENDPOINT;Port=5432;Database=$DB_NAME;User Id=postgres;Password=$DB_PASSWORD;"
           sed -i "s|\${DB_CONNECTION_STRING}|$DB_CONN|g" k8s/deployment.yaml
           sed -i "s|\${MESSAGING_CONNECTION}||g" k8s/deployment.yaml
+          sed -i "s|image: fiap-oficina-os-service:latest|image: ${{ steps.login-ecr.outputs.registry }}/fiap-oficina-os-service:latest|g" k8s/deployment.yaml
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
           kubectl rollout restart deployment os-service
