@@ -41,7 +41,8 @@ jobs:
             /o:"$SONAR_ORG" \
             /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url="https://sonarcloud.io" \
-            /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
+            /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" \
+            /d:sonar.coverage.exclusions="**/FiapOficina.Contracts/**,**/FiapOficina.ServiceDefaults/**,**/Program.cs,**/Infrastructure/**,**/*Tests*/**"
 
       - name: Build
         run: dotnet build FiapOficina.OSService.slnx --configuration Release --no-restore
