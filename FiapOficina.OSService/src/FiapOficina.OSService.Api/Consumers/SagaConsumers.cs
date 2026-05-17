@@ -119,3 +119,27 @@ public class OrderCancelledConsumer : IConsumer<OrderCancelled>
         }
     }
 }
+
+public class ExecutionStartedConsumer : IConsumer<ExecutionStarted>
+{
+    private readonly IServiceOrderRepository _repository;
+    private readonly ILogger<ExecutionStartedConsumer> _logger;
+
+    public ExecutionStartedConsumer(IServiceOrderRepository repository, ILogger<ExecutionStartedConsumer> logger)
+    {
+        _repository = repository;
+        _logger = logger;
+    }
+
+    public async Task Consume(ConsumeContext<ExecutionStarted> context)
+    {
+        _logger.LogInformation("SAGA: Execução iniciada para OS {OrderId}", context.Message.OrderId);
+        var order = await _repository.GetByIdAsync(context.Message.OrderId);
+        if (order != null)
+        {
+            order.Status = ServiceOrderStatus.InProgress;
+            await _repository.UpdateAsync(order);
+            _logger.LogInformation("Status da OS {OrderId} atualizado para InProgress", context.Message.OrderId);
+        }
+    }
+}

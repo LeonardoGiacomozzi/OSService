@@ -13,7 +13,8 @@ public enum ServiceOrderStatus
     Delivered = 7,
     Cancelled = 8,
     PaymentFailed = 9,
-    ExecutionFailed = 10
+    ExecutionFailed = 10,
+    UnderAnalysis = 11
 }
 
 public class ServiceOrder

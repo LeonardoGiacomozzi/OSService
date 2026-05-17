@@ -38,14 +38,78 @@ public class ServiceOrderController : ControllerBase
             CreatedOn = DateTime.UtcNow
         };
 
-        _logger.LogInformation("Persistindo e publicando nova Ordem de Serviço: {OrderId} para o cliente {CustomerName} no valor de {EstimatedValue}", order.Id, order.CustomerName, order.EstimatedValue);
+        _logger.LogInformation("Persistindo nova Ordem de Serviço aberta: {OrderId} para o cliente {CustomerName} no valor de {EstimatedValue}", order.Id, order.CustomerName, order.EstimatedValue);
 
         await _repository.AddAsync(order);
 
-        // Notifica o sistema que uma nova OS foi aberta (inicia a SAGA)
+        return Ok(new { Message = "Ordem aberta com sucesso. Aguardando análise/diagnóstico.", OrderId = order.Id });
+    }
+
+    [HttpPost("{id}/analyze")]
+    public async Task<IActionResult> AnalyzeOrder(Guid id)
+    {
+        var order = await _repository.GetByIdAsync(id);
+        if (order == null) return NotFound(new { message = "Ordem de serviço não encontrada." });
+
+        if (order.Status != ServiceOrderStatus.Opened)
+        {
+            return BadRequest(new { message = $"Apenas ordens no status 'Opened' podem ser analisadas. Status atual: {order.Status}" });
+        }
+
+        order.Status = ServiceOrderStatus.UnderAnalysis;
+        await _repository.UpdateAsync(order);
+
+        _logger.LogInformation("Operador efetuou diagnóstico para OS {OrderId}. Publicando OrderOpened para gerar o orçamento...", id);
+
+        // Envia o evento de abertura/diagnóstico para iniciar o orçamento na BillingService
         await _bus.Publish(new OrderOpened(order.Id, order.CustomerName, order.VehiclePlate, order.EstimatedValue));
 
-        return Ok(new { Message = "Ordem aberta com sucesso", OrderId = order.Id });
+        return Ok(new { Message = "Diagnóstico efetuado com sucesso e orçamento enviado para precificação", OrderId = id });
+    }
+
+    [HttpPost("{id}/approve")]
+    public async Task<IActionResult> ApproveOrder(Guid id)
+    {
+        var order = await _repository.GetByIdAsync(id);
+        if (order == null) return NotFound(new { message = "Ordem de serviço não encontrada." });
+
+        if (order.Status != ServiceOrderStatus.WaitingApproval)
+        {
+            return BadRequest(new { message = $"Apenas ordens no status 'WaitingApproval' podem ser aprovadas. Status atual: {order.Status}" });
+        }
+
+        order.Status = ServiceOrderStatus.Approved;
+        order.ApprovedOn = DateTime.UtcNow;
+        await _repository.UpdateAsync(order);
+
+        _logger.LogInformation("Cliente aprovou o orçamento da OS {OrderId}. Publicando BudgetApproved...", id);
+
+        // Envia o evento de orçamento aprovado para iniciar o pagamento via Mercado Pago
+        await _bus.Publish(new BudgetApproved(order.Id, Guid.NewGuid(), order.EstimatedValue));
+
+        return Ok(new { Message = "Orçamento aprovado com sucesso. Pagamento em processamento.", OrderId = id });
+    }
+
+    [HttpPost("{id}/reject")]
+    public async Task<IActionResult> RejectOrder(Guid id)
+    {
+        var order = await _repository.GetByIdAsync(id);
+        if (order == null) return NotFound(new { message = "Ordem de serviço não encontrada." });
+
+        if (order.Status != ServiceOrderStatus.WaitingApproval)
+        {
+            return BadRequest(new { message = $"Apenas ordens no status 'WaitingApproval' podem ser rejeitadas. Status atual: {order.Status}" });
+        }
+
+        order.Status = ServiceOrderStatus.Rejected;
+        await _repository.UpdateAsync(order);
+
+        _logger.LogWarning("Cliente rejeitou o orçamento da OS {OrderId}. Cancelando ordem...", id);
+
+        // Envia o evento de cancelamento para interromper o fluxo
+        await _bus.Publish(new OrderCancelled(order.Id, "Orçamento rejeitado pelo cliente"));
+
+        return Ok(new { Message = "Orçamento rejeitado e Ordem de Serviço cancelada.", OrderId = id });
     }
 
     [HttpGet("{id}")]

@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
+using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FiapOficina.OSService.Tests;
 
@@ -49,7 +52,6 @@ public class ServiceOrderControllerTests
         okResult.StatusCode.Should().Be(200);
         
         _repositoryMock.Verify(r => r.AddAsync(It.Is<ServiceOrder>(o => o.CustomerName == "John Doe" && o.VehiclePlate == "ABC-1234" && o.EstimatedValue == 500)), Times.Once);
-        _busMock.Verify(b => b.Publish(It.Is<OrderOpened>(e => e.CustomerName == "John Doe" && e.VehiclePlate == "ABC-1234" && e.EstimatedValue == 500), default), Times.Once);
     }
 
     [Fact]
@@ -72,7 +74,6 @@ public class ServiceOrderControllerTests
         okResult.StatusCode.Should().Be(200);
 
         _repositoryMock.Verify(r => r.AddAsync(It.Is<ServiceOrder>(o => o.CustomerName == string.Empty && o.VehiclePlate == string.Empty && o.EstimatedValue == 0)), Times.Once);
-        _busMock.Verify(b => b.Publish(It.Is<OrderOpened>(e => e.CustomerName == string.Empty && e.VehiclePlate == string.Empty && e.EstimatedValue == 0), default), Times.Once);
     }
 
     [Fact]
@@ -104,6 +105,151 @@ public class ServiceOrderControllerTests
 
         // Assert
         result.Should().BeOfType<NotFoundResult>();
+    }
+
+    [Fact]
+    public async Task AnalyzeOrder_ShouldReturnOk_WhenOpened()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Opened, CustomerName = "John", VehiclePlate = "Plate", EstimatedValue = 100 };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.AnalyzeOrder(orderId);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+        order.Status.Should().Be(ServiceOrderStatus.UnderAnalysis);
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+        _busMock.Verify(b => b.Publish(It.Is<OrderOpened>(e => e.OrderId == orderId), default), Times.Once);
+    }
+
+    [Fact]
+    public async Task AnalyzeOrder_ShouldReturnNotFound_WhenDoesNotExist()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync((ServiceOrder)null!);
+
+        // Act
+        var result = await _controller.AnalyzeOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task AnalyzeOrder_ShouldReturnBadRequest_WhenNotOpened()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.WaitingApproval };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.AnalyzeOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task ApproveOrder_ShouldReturnOk_WhenWaitingApproval()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.WaitingApproval, EstimatedValue = 150 };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.ApproveOrder(orderId);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+        order.Status.Should().Be(ServiceOrderStatus.Approved);
+        order.ApprovedOn.Should().NotBeNull();
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+        _busMock.Verify(b => b.Publish(It.Is<BudgetApproved>(e => e.OrderId == orderId && e.Amount == 150), default), Times.Once);
+    }
+
+    [Fact]
+    public async Task ApproveOrder_ShouldReturnNotFound_WhenDoesNotExist()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync((ServiceOrder)null!);
+
+        // Act
+        var result = await _controller.ApproveOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task ApproveOrder_ShouldReturnBadRequest_WhenNotWaitingApproval()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Opened };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.ApproveOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<BadRequestObjectResult>();
+    }
+
+    [Fact]
+    public async Task RejectOrder_ShouldReturnOk_WhenWaitingApproval()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.WaitingApproval };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.RejectOrder(orderId);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+        order.Status.Should().Be(ServiceOrderStatus.Rejected);
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+        _busMock.Verify(b => b.Publish(It.Is<OrderCancelled>(e => e.OrderId == orderId), default), Times.Once);
+    }
+
+    [Fact]
+    public async Task RejectOrder_ShouldReturnNotFound_WhenDoesNotExist()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync((ServiceOrder)null!);
+
+        // Act
+        var result = await _controller.RejectOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<NotFoundObjectResult>();
+    }
+
+    [Fact]
+    public async Task RejectOrder_ShouldReturnBadRequest_WhenNotWaitingApproval()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Opened };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        // Act
+        var result = await _controller.RejectOrder(orderId);
+
+        // Assert
+        result.Should().BeOfType<BadRequestObjectResult>();
     }
 
     [Fact]
