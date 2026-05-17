@@ -1,0 +1,31 @@
+Summary
+  Generated on: 17/05/2026 - 10:59:41
+  Coverage date: 17/05/2026 - 10:59:31
+  Parser: Cobertura
+  Assemblies: 1
+  Classes: 9
+  Files: 5
+  Line coverage: 22%
+  Covered lines: 108
+  Uncovered lines: 381
+  Coverable lines: 489
+  Total lines: 810
+  Branch coverage: 5.9% (13 of 220)
+  Covered branches: 13
+  Total branches: 220
+  Method coverage: 54.7% (29 of 53)
+  Full method coverage: 52.8% (28 of 53)
+  Covered methods: 29
+  Fully covered methods: 28
+  Total methods: 53
+
+FiapOficina.OSService.Api                                           22%
+  FiapOficina.OSService.Api.Consumers.BudgetCreatedConsumer        100%
+  FiapOficina.OSService.Api.Consumers.ExecutionFinishedConsumer   80.9%
+  FiapOficina.OSService.Api.Consumers.OrderCancelledConsumer       100%
+  FiapOficina.OSService.Api.Consumers.PaymentProcessedConsumer     100%
+  FiapOficina.OSService.Api.Controllers.ServiceOrderController     100%
+  FiapOficina.OSService.Api.Models.OrderState                      100%
+  FiapOficina.OSService.Api.Models.ServiceOrder                    100%
+  Microsoft.AspNetCore.OpenApi.Generated                             0%
+  System.Runtime.CompilerServices                                    0%
