@@ -106,6 +106,26 @@ public class SagaConsumersTests
     }
 
     [Fact]
+    public async Task ExecutionFinishedConsumer_ShouldUpdateStatusToExecutionFailed_WhenFailure()
+    {
+        // Arrange
+        var orderId = Guid.NewGuid();
+        var order = new ServiceOrder { Id = orderId, Status = ServiceOrderStatus.Approved };
+        _repositoryMock.Setup(r => r.GetByIdAsync(orderId)).ReturnsAsync(order);
+
+        var consumer = new ExecutionFinishedConsumer(_repositoryMock.Object, new Mock<ILogger<ExecutionFinishedConsumer>>().Object);
+        var contextMock = new Mock<ConsumeContext<ExecutionFinished>>();
+        contextMock.Setup(c => c.Message).Returns(new ExecutionFinished(orderId, false, "Execution failed due to missing parts"));
+
+        // Act
+        await consumer.Consume(contextMock.Object);
+
+        // Assert
+        order.Status.Should().Be(ServiceOrderStatus.ExecutionFailed);
+        _repositoryMock.Verify(r => r.UpdateAsync(order), Times.Once);
+    }
+
+    [Fact]
     public async Task OrderCancelledConsumer_ShouldUpdateStatusToCancelled()
     {
         // Arrange

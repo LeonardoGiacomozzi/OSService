@@ -55,3 +55,22 @@ jobs:
           kubectl apply -f k8s/deployment.yaml
           kubectl apply -f k8s/service.yaml
           kubectl rollout restart deployment os-service
+
+      - name: Show Service URL
+        run: |
+          echo "=========================================================="
+          echo "OSService successfully deployed!"
+          echo "Fetching LoadBalancer URL..."
+          # Wait up to 30 seconds for the LoadBalancer to get its DNS
+          for i in {1..10}; do
+            LB_URL=$(kubectl get svc os-service -o jsonpath='{.status.loadBalancer.ingress[0].hostname}' || echo "")
+            if [ ! -z "$LB_URL" ]; then
+              break
+            fi
+            sleep 3
+          done
+          if [ -z "$LB_URL" ]; then
+            LB_URL=$(kubectl get svc os-service -o jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo "Pending...")
+          fi
+          echo "Public URL: http://$LB_URL"
+          echo "=========================================================="
