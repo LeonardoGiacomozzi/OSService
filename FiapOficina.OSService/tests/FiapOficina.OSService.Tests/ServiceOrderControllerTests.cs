@@ -31,22 +31,25 @@ public class ServiceOrderControllerTests
     public async Task CreateOrder_ShouldReturnOk_WhenRequestIsValid()
     {
         // Arrange
-        var serviceOrder = new ServiceOrder
+        var dto = new CreateServiceOrderDto
         {
-            CustomerName = "John Doe",
-            VehiclePlate = "ABC-1234",
-            EstimatedValue = 500
+            Client = new ClientDto { Name = "John Doe" },
+            Vehicle = new VehicleDto { Plate = "ABC-1234" },
+            Services = new List<ServiceDto>
+            {
+                new ServiceDto { Value = 100, Quantity = 5 }
+            }
         };
 
         // Act
-        var result = await _controller.CreateOrder(serviceOrder);
+        var result = await _controller.CreateOrder(dto);
 
         // Assert
         var okResult = result.As<OkObjectResult>();
         okResult.StatusCode.Should().Be(200);
         
-        _repositoryMock.Verify(r => r.AddAsync(It.IsAny<ServiceOrder>()), Times.Once);
-        _busMock.Verify(b => b.Publish(It.IsAny<OrderOpened>(), default), Times.Once);
+        _repositoryMock.Verify(r => r.AddAsync(It.Is<ServiceOrder>(o => o.CustomerName == "John Doe" && o.VehiclePlate == "ABC-1234" && o.EstimatedValue == 500)), Times.Once);
+        _busMock.Verify(b => b.Publish(It.Is<OrderOpened>(e => e.CustomerName == "John Doe" && e.VehiclePlate == "ABC-1234" && e.EstimatedValue == 500), default), Times.Once);
     }
 
     [Fact]
