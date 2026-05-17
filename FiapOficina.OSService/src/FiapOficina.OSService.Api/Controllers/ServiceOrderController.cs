@@ -59,12 +59,28 @@ public class ServiceOrderController : ControllerBase
         order.Status = ServiceOrderStatus.UnderAnalysis;
         await _repository.UpdateAsync(order);
 
-        _logger.LogInformation("Operador efetuou diagnóstico para OS {OrderId}. Publicando OrderOpened para gerar o orçamento...", id);
+        _logger.LogInformation("Operador iniciou diagnóstico/análise para OS {OrderId}.", id);
+
+        return Ok(new { Message = "Análise iniciada com sucesso. A ordem de serviço está em diagnóstico.", OrderId = id });
+    }
+
+    [HttpPost("{id}/finish-analysis")]
+    public async Task<IActionResult> FinishAnalysis(Guid id)
+    {
+        var order = await _repository.GetByIdAsync(id);
+        if (order == null) return NotFound(new { message = "Ordem de serviço não encontrada." });
+
+        if (order.Status != ServiceOrderStatus.UnderAnalysis)
+        {
+            return BadRequest(new { message = $"Apenas ordens no status 'UnderAnalysis' podem ter a análise finalizada. Status atual: {order.Status}" });
+        }
+
+        _logger.LogInformation("Operador finalizou o diagnóstico para OS {OrderId}. Publicando OrderOpened para gerar o orçamento...", id);
 
         // Envia o evento de abertura/diagnóstico para iniciar o orçamento na BillingService
         await _bus.Publish(new OrderOpened(order.Id, order.CustomerName, order.VehiclePlate, order.EstimatedValue));
 
-        return Ok(new { Message = "Diagnóstico efetuado com sucesso e orçamento enviado para precificação", OrderId = id });
+        return Ok(new { Message = "Análise finalizada com sucesso e orçamento enviado para precificação.", OrderId = id });
     }
 
     [HttpPost("{id}/approve")]
