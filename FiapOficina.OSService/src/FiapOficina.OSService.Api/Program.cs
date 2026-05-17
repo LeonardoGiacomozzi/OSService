@@ -10,6 +10,16 @@ using Microsoft.Extensions.Hosting;
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var connectionString = builder.Configuration.GetConnectionString("postgres") ?? "Host=localhost;Database=osdb;Username=postgres;Password=postgres";
 builder.Services.AddDbContext<OSDbContext>(options => 
     options.UseNpgsql(connectionString));
@@ -101,6 +111,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.MapDefaultEndpoints();
+
+app.UseCors("AllowAll");
 
 app.UseSwagger();
 app.UseSwaggerUI();
