@@ -41,7 +41,7 @@ jobs:
 
       - name: Fetch RDS Info
         run: |
-          RDS_ENDPOINT=$(aws rds describe-db-instances --db-instance-identifier fiap-oficina-os-db --query 'DBInstances[0].Endpoint.Address' --output text)
+          RDS_ENDPOINT=$(aws rds describe-db-instances --query "DBInstances[?TagList[?Key=='Name' && Value=='fiap-oficina-os-db']].Endpoint.Address" --output text)
           echo "RDS_ENDPOINT=$RDS_ENDPOINT" >> $GITHUB_ENV
 
       - name: Deploy to EKS
