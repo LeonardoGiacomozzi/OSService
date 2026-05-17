@@ -8,15 +8,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@3951f0dfe7a07e2313ec93c75700083e2005cbab # v4.0.1
         with:
           dotnet-version: '10.x'
 
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4.0.2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -24,7 +24,7 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+        uses: aws-actions/amazon-ecr-login@062b18b96a7aff071d4ad91bc005b7cd95e6f4ca # v2.0.1
 
       - name: Build and Push Docker Image
         env:
@@ -45,8 +45,11 @@ jobs:
           echo "RDS_ENDPOINT=$RDS_ENDPOINT" >> $GITHUB_ENV
 
       - name: Deploy to EKS
+        env:
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
-          DB_CONN="Server=$RDS_ENDPOINT;Port=5432;Database=${{ secrets.DB_NAME }};User Id=postgres;Password=${{ secrets.DB_PASSWORD }};"
+          DB_CONN="Server=$RDS_ENDPOINT;Port=5432;Database=$DB_NAME;User Id=postgres;Password=$DB_PASSWORD;"
           sed -i "s|\${DB_CONNECTION_STRING}|$DB_CONN|g" k8s/deployment.yaml
           sed -i "s|\${MESSAGING_CONNECTION}||g" k8s/deployment.yaml
           kubectl apply -f k8s/deployment.yaml
