@@ -53,6 +53,29 @@ public class ServiceOrderControllerTests
     }
 
     [Fact]
+    public async Task CreateOrder_ShouldReturnOk_WhenDtoHasNullListsAndNestedProperties()
+    {
+        // Arrange
+        var dto = new CreateServiceOrderDto
+        {
+            Client = null!,
+            Vehicle = null!,
+            Services = null!,
+            Materials = null!
+        };
+
+        // Act
+        var result = await _controller.CreateOrder(dto);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+
+        _repositoryMock.Verify(r => r.AddAsync(It.Is<ServiceOrder>(o => o.CustomerName == string.Empty && o.VehiclePlate == string.Empty && o.EstimatedValue == 0)), Times.Once);
+        _busMock.Verify(b => b.Publish(It.Is<OrderOpened>(e => e.CustomerName == string.Empty && e.VehiclePlate == string.Empty && e.EstimatedValue == 0), default), Times.Once);
+    }
+
+    [Fact]
     public async Task GetOrder_ShouldReturnOk_WhenOrderExists()
     {
         // Arrange
