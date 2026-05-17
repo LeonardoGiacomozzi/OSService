@@ -1,0 +1,48 @@
+Summary
+  Generated on: 17/05/2026 - 10:11:08
+  Coverage date: 17/05/2026 - 10:10:42
+  Parser: Cobertura
+  Assemblies: 3
+  Classes: 22
+  Files: 7
+  Line coverage: 19.8%
+  Covered lines: 113
+  Uncovered lines: 456
+  Coverable lines: 569
+  Total lines: 957
+  Branch coverage: 5.4% (13 of 238)
+  Covered branches: 13
+  Total branches: 238
+  Method coverage: 48.5% (34 of 70)
+  Full method coverage: 47.1% (33 of 70)
+  Covered methods: 34
+  Fully covered methods: 33
+  Total methods: 70
+
+FiapOficina.Contracts                                             41.6%
+  FiapOficina.Contracts.BudgetApproved                               0%
+  FiapOficina.Contracts.BudgetCreated                              100%
+  FiapOficina.Contracts.CreateBudgetCommand                          0%
+  FiapOficina.Contracts.ExecutionFinished                          100%
+  FiapOficina.Contracts.ExecutionStarted                             0%
+  FiapOficina.Contracts.OrderCancelled                             100%
+  FiapOficina.Contracts.OrderFinalized                               0%
+  FiapOficina.Contracts.OrderOpened                                100%
+  FiapOficina.Contracts.PaymentProcessed                           100%
+  FiapOficina.Contracts.PaymentRefunded                              0%
+  FiapOficina.Contracts.ProcessPaymentCommand                        0%
+  FiapOficina.Contracts.StartExecutionCommand                        0%
+
+FiapOficina.OSService.Api                                           22%
+  FiapOficina.OSService.Api.Consumers.BudgetCreatedConsumer        100%
+  FiapOficina.OSService.Api.Consumers.ExecutionFinishedConsumer   80.9%
+  FiapOficina.OSService.Api.Consumers.OrderCancelledConsumer       100%
+  FiapOficina.OSService.Api.Consumers.PaymentProcessedConsumer     100%
+  FiapOficina.OSService.Api.Controllers.ServiceOrderController     100%
+  FiapOficina.OSService.Api.Models.OrderState                      100%
+  FiapOficina.OSService.Api.Models.ServiceOrder                    100%
+  Microsoft.AspNetCore.OpenApi.Generated                             0%
+  System.Runtime.CompilerServices                                    0%
+
+FiapOficina.ServiceDefaults                                          0%
+  Microsoft.Extensions.Hosting.Extensions                            0%

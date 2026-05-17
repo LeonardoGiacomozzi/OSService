@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FiapOficina.OSService.Api.Infrastructure;
 
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 public class OSDbContext : DbContext
 {
     public OSDbContext(DbContextOptions<OSDbContext> options) : base(options) { }
