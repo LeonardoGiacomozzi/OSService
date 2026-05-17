@@ -39,9 +39,9 @@ if (authEnabled)
             options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
             {
                 ValidateIssuer = true,
-                ValidIssuer = jwtIssuer,
+                ValidIssuers = new[] { jwtIssuer, "FIAPOficina", "fiap-oficina-auth" },
                 ValidateAudience = true,
-                ValidAudience = jwtAudience,
+                ValidAudiences = new[] { jwtAudience, "FIAPOficina-clients", "fiap-oficina-service", "fiap-oficina-services" },
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(jwtKey))
