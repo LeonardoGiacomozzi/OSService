@@ -61,9 +61,12 @@ builder.Services.AddSwaggerGen(c =>
         Description = "Insira o token JWT retornado pelo login/auth (não digite 'Bearer', digite apenas o token limpo, sem aspas)."
     });
     
-    var requirement = new Microsoft.OpenApi.OpenApiSecurityRequirement();
-    requirement.Add(new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer", null, null), new List<string>());
-    c.AddSecurityRequirement(_ => requirement);
+    c.AddSecurityRequirement(doc =>
+    {
+        var requirement = new Microsoft.OpenApi.OpenApiSecurityRequirement();
+        requirement.Add(new Microsoft.OpenApi.OpenApiSecuritySchemeReference("Bearer", doc, null), new List<string>());
+        return requirement;
+    });
 });
 
 builder.Services.AddMassTransit(x =>
