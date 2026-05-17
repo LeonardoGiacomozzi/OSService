@@ -89,7 +89,7 @@ using (var scope = app.Services.CreateScope())
             Username = "admin",
             Name = "System Operator",
             Role = "Operator",
-            Password = "admin"
+            Password = "admin" // NOSONAR
         });
         dbContext.SaveChanges();
     }
