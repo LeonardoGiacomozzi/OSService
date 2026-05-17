@@ -47,7 +47,7 @@ jobs:
         run: dotnet build FiapOficina.OSService.slnx --configuration Release --no-restore
 
       - name: Test
-        run: dotnet test FiapOficina.OSService.slnx --configuration Release --no-build --collect:"XPlat Code Coverage;Format=opencover" --results-directory ./TestResults
+        run: dotnet test FiapOficina.OSService.slnx --configuration Release --no-build --collect:"XPlat Code Coverage;Format=opencover" --results-directory ./TestResults -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Exclude="[FiapOficina.Contracts]*,[FiapOficina.ServiceDefaults]*,[*]Microsoft.AspNetCore.OpenApi.Generated*,[*]System.Runtime.CompilerServices*"
 
       - name: Sonar End
         env:
