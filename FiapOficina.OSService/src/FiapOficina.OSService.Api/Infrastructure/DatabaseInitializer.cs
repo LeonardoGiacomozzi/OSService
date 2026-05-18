@@ -98,6 +98,17 @@ public static class DatabaseInitializer
                 CONSTRAINT ""PK_Users"" PRIMARY KEY (""Id"")
             );
 
+            CREATE TABLE IF NOT EXISTS ""Clients"" (
+                ""Id"" uuid NOT NULL,
+                ""Identifier"" text NOT NULL,
+                ""Name"" text NOT NULL,
+                CONSTRAINT ""PK_Clients"" PRIMARY KEY (""Id"")
+            );
+
+            INSERT INTO ""Clients"" (""Id"", ""Identifier"", ""Name"")
+            VALUES ('a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d', '12345678909', 'Cliente Padrao Oficina')
+            ON CONFLICT DO NOTHING;
+
             CREATE INDEX IF NOT EXISTS ""IX_InboxState_Delivered"" ON ""InboxState"" (""Delivered"");
             CREATE INDEX IF NOT EXISTS ""IX_OutboxMessage_EnqueueTime"" ON ""OutboxMessage"" (""EnqueueTime"");
             CREATE INDEX IF NOT EXISTS ""IX_OutboxMessage_ExpirationTime"" ON ""OutboxMessage"" (""ExpirationTime"");
