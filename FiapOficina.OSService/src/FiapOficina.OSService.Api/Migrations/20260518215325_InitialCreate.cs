@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -7,6 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FiapOficina.OSService.Api.Migrations
 {
     /// <inheritdoc />
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
