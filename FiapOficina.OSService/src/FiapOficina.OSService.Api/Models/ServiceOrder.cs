@@ -21,6 +21,7 @@ public class ServiceOrder
 {
     [Key]
     public Guid Id { get; set; }
+    public Guid? CustomerId { get; set; }
     public Guid VehicleId { get; set; }
     public string CustomerName { get; set; } = string.Empty;
     public string VehiclePlate { get; set; } = string.Empty;

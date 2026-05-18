@@ -299,6 +299,78 @@ public class ServiceOrderControllerTests
     }
 
     [Fact]
+    public async Task CreateOrder_ShouldUseExistingClient_WhenClientExistsByCpf()
+    {
+        // Arrange
+        var existingClientId = Guid.NewGuid();
+        var existingClient = new Client
+        {
+            Id = existingClientId,
+            Identifier = "12345678909",
+            Name = "Cliente Existente"
+        };
+
+        _repositoryMock.Setup(r => r.GetClientByIdentifierAsync("12345678909"))
+                       .ReturnsAsync(existingClient);
+
+        var dto = new CreateServiceOrderDto
+        {
+            Client = new ClientDto { Name = "John Doe", Identifier = "12345678909" },
+            Vehicle = new VehicleDto { Plate = "ABC-1234" },
+            Services = new List<ServiceDto> { new ServiceDto { Value = 100, Quantity = 5 } }
+        };
+
+        // Act
+        var result = await _controller.CreateOrder(dto);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+
+        _repositoryMock.Verify(r => r.AddClientAsync(It.IsAny<Client>()), Times.Never);
+        _repositoryMock.Verify(r => r.AddAsync(It.Is<ServiceOrder>(o => 
+            o.CustomerId == existingClientId && 
+            o.CustomerName == "Cliente Existente" && 
+            o.VehiclePlate == "ABC-1234" && 
+            o.EstimatedValue == 500)), Times.Once);
+    }
+
+    [Fact]
+    public async Task CreateOrder_ShouldCreateNewClient_WhenClientDoesNotExistByCpf()
+    {
+        // Arrange
+        _repositoryMock.Setup(r => r.GetClientByIdentifierAsync("99999999999"))
+                       .ReturnsAsync((Client)null!);
+
+        var dto = new CreateServiceOrderDto
+        {
+            Client = new ClientDto { Name = "Cliente Novo", Identifier = "99999999999", Phone = "99999", Email = "novo@test.com", Address = "Rua Nova" },
+            Vehicle = new VehicleDto { Plate = "ABC-1234" },
+            Services = new List<ServiceDto> { new ServiceDto { Value = 100, Quantity = 5 } }
+        };
+
+        // Act
+        var result = await _controller.CreateOrder(dto);
+
+        // Assert
+        var okResult = result.As<OkObjectResult>();
+        okResult.StatusCode.Should().Be(200);
+
+        _repositoryMock.Verify(r => r.AddClientAsync(It.Is<Client>(c => 
+            c.Identifier == "99999999999" && 
+            c.Name == "Cliente Novo" && 
+            c.Phone == "99999" && 
+            c.Email == "novo@test.com" && 
+            c.Address == "Rua Nova")), Times.Once);
+
+        _repositoryMock.Verify(r => r.AddAsync(It.Is<ServiceOrder>(o => 
+            o.CustomerId != null && 
+            o.CustomerName == "Cliente Novo" && 
+            o.VehiclePlate == "ABC-1234" && 
+            o.EstimatedValue == 500)), Times.Once);
+    }
+
+    [Fact]
     public void DtoClasses_ShouldGetAndSetPropertiesCorrectly()
     {
         // Arrange & Act

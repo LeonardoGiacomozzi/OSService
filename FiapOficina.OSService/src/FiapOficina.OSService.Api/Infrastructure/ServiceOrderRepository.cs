@@ -8,6 +8,8 @@ public interface IServiceOrderRepository
     Task<ServiceOrder?> GetByIdAsync(Guid id);
     Task AddAsync(ServiceOrder order);
     Task UpdateAsync(ServiceOrder order);
+    Task<Client?> GetClientByIdentifierAsync(string identifier);
+    Task AddClientAsync(Client client);
 }
 
 [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
@@ -34,6 +36,17 @@ public class ServiceOrderRepository : IServiceOrderRepository
     public async Task UpdateAsync(ServiceOrder order)
     {
         _context.ServiceOrders.Update(order);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<Client?> GetClientByIdentifierAsync(string identifier)
+    {
+        return await _context.Clients.FirstOrDefaultAsync(c => c.Identifier == identifier);
+    }
+
+    public async Task AddClientAsync(Client client)
+    {
+        _context.Clients.Add(client);
         await _context.SaveChangesAsync();
     }
 }
