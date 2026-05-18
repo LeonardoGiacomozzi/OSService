@@ -8,7 +8,33 @@ public static class DatabaseInitializer
 {
     public static void InitializeDatabase(OSDbContext dbContext)
     {
-        dbContext.Database.Migrate();
+        try
+        {
+            dbContext.Database.Migrate();
+        }
+        catch (Exception ex) when (ex.Message.Contains("42P07") || ex.Message.Contains("already exists"))
+        {
+            Console.WriteLine("[DatabaseInitializer] As tabelas já existem no banco da AWS. Inserindo migração inicial na tabela de histórico para sincronizar o EF Core.");
+            try
+            {
+                dbContext.Database.ExecuteSqlRaw(@"
+                    CREATE TABLE IF NOT EXISTS ""__EFMigrationsHistory"" (
+                        ""MigrationId"" character varying(150) NOT NULL,
+                        ""ProductVersion"" character varying(32) NOT NULL,
+                        CONSTRAINT ""PK___EFMigrationsHistory"" PRIMARY KEY (""MigrationId"")
+                    );
+                    INSERT INTO ""__EFMigrationsHistory"" (""MigrationId"", ""ProductVersion"")
+                    VALUES ('20260518215325_InitialCreate', '10.0.0')
+                    ON CONFLICT DO NOTHING;
+                ");
+                dbContext.Database.Migrate();
+            }
+            catch (Exception retryEx)
+            {
+                Console.WriteLine($"[DatabaseInitializer] Falha ao registrar migração inicial no histórico: {retryEx.Message}");
+                throw;
+            }
+        }
 
         if (!dbContext.Users.Any())
         {
