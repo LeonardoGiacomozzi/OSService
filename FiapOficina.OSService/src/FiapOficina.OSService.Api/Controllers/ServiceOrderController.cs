@@ -28,10 +28,43 @@ public class ServiceOrderController : ControllerBase
         var materialsTotal = dto.Materials?.Sum(m => m.Value * m.Quantity) ?? 0;
         var totalValue = servicesTotal + materialsTotal;
 
+        string customerName = string.Empty;
+        Guid? customerId = null;
+
+        if (dto.Client != null && !string.IsNullOrWhiteSpace(dto.Client.Identifier))
+        {
+            var existingClient = await _repository.GetClientByIdentifierAsync(dto.Client.Identifier);
+            if (existingClient != null)
+            {
+                customerId = existingClient.Id;
+                customerName = existingClient.Name;
+            }
+            else
+            {
+                var newClient = new Client
+                {
+                    Id = Guid.NewGuid(),
+                    Identifier = dto.Client.Identifier,
+                    Name = dto.Client.Name ?? string.Empty,
+                    Phone = dto.Client.Phone,
+                    Email = dto.Client.Email,
+                    Address = dto.Client.Address
+                };
+                await _repository.AddClientAsync(newClient);
+                customerId = newClient.Id;
+                customerName = newClient.Name;
+            }
+        }
+        else if (dto.Client != null)
+        {
+            customerName = dto.Client.Name ?? string.Empty;
+        }
+
         var order = new ServiceOrder
         {
             Id = Guid.NewGuid(),
-            CustomerName = dto.Client?.Name ?? string.Empty,
+            CustomerId = customerId,
+            CustomerName = customerName,
             VehiclePlate = dto.Vehicle?.Plate ?? string.Empty,
             EstimatedValue = totalValue,
             Status = ServiceOrderStatus.Opened,

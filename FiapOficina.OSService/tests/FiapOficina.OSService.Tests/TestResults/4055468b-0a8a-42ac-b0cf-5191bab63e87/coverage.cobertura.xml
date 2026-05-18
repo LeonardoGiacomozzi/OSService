@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0.8109000000000001" branch-rate="0.7340000000000001" version="1.9" timestamp="1779141782" lines-covered="326" lines-valid="402" branches-covered="69" branches-valid="94">
+  <sources>
+    <source>C:\Pos\QuartaFase\OSService\</source>
+  </sources>
+  <packages>
+    <package name="FiapOficina.Contracts" line-rate="0.5832999999999999" branch-rate="1" complexity="12">
+      <classes>
+        <class name="FiapOficina.Contracts.OrderOpened" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="4" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="4" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.BudgetCreated" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.BudgetApproved" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="6" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.PaymentProcessed" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="10" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="10" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.ExecutionStarted" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.ExecutionFinished" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="9" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="9" hits="9" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.OrderFinalized" filename="FiapOficina.Contracts\IEvents.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="10" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.OrderCancelled" filename="FiapOficina.Contracts\IEvents.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.PaymentRefunded" filename="FiapOficina.Contracts\IEvents.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.CreateBudgetCommand" filename="FiapOficina.Contracts\IEvents.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="18" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.ProcessPaymentCommand" filename="FiapOficina.Contracts\IEvents.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="19" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.Contracts.StartExecutionCommand" filename="FiapOficina.Contracts\IEvents.cs" line-rate="0" branch-rate="1" complexity="1">
+          <methods>
+            <method name="get_OrderId" signature="()" line-rate="0" branch-rate="1" complexity="1">
+              <lines>
+                <line number="20" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="0" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="FiapOficina.OSService.Api" line-rate="0.9906" branch-rate="0.9078" complexity="142">
+      <classes>
+        <class name="FiapOficina.OSService.Api.Models.Client" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Models\Client.cs" line-rate="1" branch-rate="1" complexity="6">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="7" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Identifier" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="13" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="16" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Phone" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Email" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Address" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="5" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="7" branch="False" />
+            <line number="9" hits="13" branch="False" />
+            <line number="10" hits="16" branch="False" />
+            <line number="11" hits="5" branch="False" />
+            <line number="12" hits="5" branch="False" />
+            <line number="13" hits="5" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Models.OrderState" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Models\OrderState.cs" line-rate="1" branch-rate="1" complexity="9">
+          <methods>
+            <method name="get_CorrelationId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CurrentState" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CreatedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="10" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_BudgetedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="11" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ApprovedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="12" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PaidAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_FinishedAt" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_BudgetId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="16" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Amount" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="2" branch="False" />
+            <line number="8" hits="3" branch="False" />
+            <line number="10" hits="2" branch="False" />
+            <line number="11" hits="2" branch="False" />
+            <line number="12" hits="2" branch="False" />
+            <line number="13" hits="2" branch="False" />
+            <line number="14" hits="2" branch="False" />
+            <line number="16" hits="2" branch="False" />
+            <line number="17" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Models.ServiceOrder" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Models\ServiceOrder.cs" line-rate="1" branch-rate="1" complexity="10">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="23" hits="34" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CustomerId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="24" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_VehicleId" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="25" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CustomerName" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="26" hits="39" branch="False" />
+              </lines>
+            </method>
+            <method name="get_VehiclePlate" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="27" hits="34" branch="False" />
+              </lines>
+            </method>
+            <method name="get_EstimatedValue" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="28" hits="19" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Status" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="29" hits="74" branch="False" />
+              </lines>
+            </method>
+            <method name="get_CreatedOn" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="30" hits="27" branch="False" />
+              </lines>
+            </method>
+            <method name="get_ApprovedOn" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="31" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="get_FinishedOn" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="32" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="23" hits="34" branch="False" />
+            <line number="24" hits="6" branch="False" />
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="39" branch="False" />
+            <line number="27" hits="34" branch="False" />
+            <line number="28" hits="19" branch="False" />
+            <line number="29" hits="74" branch="False" />
+            <line number="30" hits="27" branch="False" />
+            <line number="31" hits="5" branch="False" />
+            <line number="32" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Models.User" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Models\User.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="get_Id" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="5" hits="7" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Username" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="6" hits="22" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="7" hits="16" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Role" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="8" hits="13" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Password" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="9" hits="13" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="7" branch="False" />
+            <line number="6" hits="22" branch="False" />
+            <line number="7" hits="16" branch="False" />
+            <line number="8" hits="13" branch="False" />
+            <line number="9" hits="13" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ClientController" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ClientController.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="14" hits="3" branch="False" />
+                <line number="15" hits="3" branch="False" />
+                <line number="16" hits="3" branch="False" />
+                <line number="17" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="3" branch="False" />
+            <line number="15" hits="3" branch="False" />
+            <line number="16" hits="3" branch="False" />
+            <line number="17" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ClientController/&lt;GetClientByCpf&gt;d__2" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ClientController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="22" hits="3" branch="False" />
+                <line number="23" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="28" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="28" hits="2" branch="False" />
+                <line number="29" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="208" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="30" hits="1" branch="False" />
+                <line number="31" hits="1" branch="False" />
+                <line number="34" hits="1" branch="False" />
+                <line number="35" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="3" branch="False" />
+            <line number="23" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="28" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="28" hits="2" branch="False" />
+            <line number="29" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="208" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="30" hits="1" branch="False" />
+            <line number="31" hits="1" branch="False" />
+            <line number="34" hits="1" branch="False" />
+            <line number="35" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository,MassTransit.IBus,Microsoft.Extensions.Logging.ILogger`1&lt;FiapOficina.OSService.Api.Controllers.ServiceOrderController&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="17" hits="19" branch="False" />
+                <line number="18" hits="19" branch="False" />
+                <line number="19" hits="19" branch="False" />
+                <line number="20" hits="19" branch="False" />
+                <line number="21" hits="19" branch="False" />
+                <line number="22" hits="19" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="19" branch="False" />
+            <line number="18" hits="19" branch="False" />
+            <line number="19" hits="19" branch="False" />
+            <line number="20" hits="19" branch="False" />
+            <line number="21" hits="19" branch="False" />
+            <line number="22" hits="19" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;&gt;c" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="&lt;CreateOrder&gt;b__4_0" signature="(FiapOficina.OSService.Api.Controllers.ServiceDto)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="27" hits="7" branch="False" />
+              </lines>
+            </method>
+            <method name="&lt;CreateOrder&gt;b__4_1" signature="(FiapOficina.OSService.Api.Controllers.MaterialDto)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="28" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="27" hits="7" branch="False" />
+            <line number="28" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;AnalyzeOrder&gt;d__5" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="83" hits="3" branch="False" />
+                <line number="84" hits="3" branch="False" />
+                <line number="85" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="175" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="87" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="225" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="88" hits="1" branch="False" />
+                <line number="89" hits="1" branch="False" />
+                <line number="92" hits="1" branch="False" />
+                <line number="93" hits="1" branch="False" />
+                <line number="95" hits="1" branch="False" />
+                <line number="97" hits="1" branch="False" />
+                <line number="98" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="83" hits="3" branch="False" />
+            <line number="84" hits="3" branch="False" />
+            <line number="85" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="175" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="87" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="225" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="88" hits="1" branch="False" />
+            <line number="89" hits="1" branch="False" />
+            <line number="92" hits="1" branch="False" />
+            <line number="93" hits="1" branch="False" />
+            <line number="95" hits="1" branch="False" />
+            <line number="97" hits="1" branch="False" />
+            <line number="98" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;ApproveOrder&gt;d__7" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="121" hits="3" branch="False" />
+                <line number="122" hits="3" branch="False" />
+                <line number="123" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="189" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="125" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="239" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="126" hits="1" branch="False" />
+                <line number="127" hits="1" branch="False" />
+                <line number="130" hits="1" branch="False" />
+                <line number="131" hits="1" branch="False" />
+                <line number="132" hits="1" branch="False" />
+                <line number="134" hits="1" branch="False" />
+                <line number="137" hits="1" branch="False" />
+                <line number="139" hits="1" branch="False" />
+                <line number="140" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="121" hits="3" branch="False" />
+            <line number="122" hits="3" branch="False" />
+            <line number="123" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="189" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="125" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="239" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="126" hits="1" branch="False" />
+            <line number="127" hits="1" branch="False" />
+            <line number="130" hits="1" branch="False" />
+            <line number="131" hits="1" branch="False" />
+            <line number="132" hits="1" branch="False" />
+            <line number="134" hits="1" branch="False" />
+            <line number="137" hits="1" branch="False" />
+            <line number="139" hits="1" branch="False" />
+            <line number="140" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;CreateOrder&gt;d__4" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="0.9" complexity="20">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="0.9" complexity="20">
+              <lines>
+                <line number="26" hits="4" branch="False" />
+                <line number="29" hits="4" branch="False" />
+                <line number="31" hits="4" branch="False" />
+                <line number="32" hits="4" branch="False" />
+                <line number="34" hits="4" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="228" type="jump" coverage="100%" />
+                    <condition number="259" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="35" hits="2" branch="False" />
+                <line number="36" hits="2" branch="False" />
+                <line number="37" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="425" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="1" branch="False" />
+                <line number="39" hits="1" branch="False" />
+                <line number="40" hits="1" branch="False" />
+                <line number="41" hits="1" branch="False" />
+                <line number="43" hits="1" branch="False" />
+                <line number="44" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="533" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="45" hits="1" branch="False" />
+                <line number="46" hits="1" branch="False" />
+                <line number="47" hits="1" branch="False" />
+                <line number="48" hits="1" branch="False" />
+                <line number="49" hits="1" branch="False" />
+                <line number="50" hits="1" branch="False" />
+                <line number="51" hits="1" branch="False" />
+                <line number="52" hits="1" branch="False" />
+                <line number="53" hits="1" branch="False" />
+                <line number="54" hits="1" branch="False" />
+                <line number="55" hits="1" branch="False" />
+                <line number="56" hits="1" branch="False" />
+                <line number="57" hits="2" branch="False" />
+                <line number="58" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="812" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="59" hits="1" branch="False" />
+                <line number="60" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="833" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="61" hits="1" branch="False" />
+                <line number="63" hits="4" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="904" type="jump" coverage="100%" />
+                    <condition number="916" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="64" hits="4" branch="False" />
+                <line number="65" hits="4" branch="False" />
+                <line number="66" hits="4" branch="False" />
+                <line number="67" hits="4" branch="False" />
+                <line number="68" hits="4" branch="False" />
+                <line number="69" hits="4" branch="False" />
+                <line number="70" hits="4" branch="False" />
+                <line number="71" hits="4" branch="False" />
+                <line number="72" hits="4" branch="False" />
+                <line number="74" hits="4" branch="False" />
+                <line number="76" hits="4" branch="False" />
+                <line number="78" hits="4" branch="False" />
+                <line number="79" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="26" hits="4" branch="False" />
+            <line number="29" hits="4" branch="False" />
+            <line number="31" hits="4" branch="False" />
+            <line number="32" hits="4" branch="False" />
+            <line number="34" hits="4" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="228" type="jump" coverage="100%" />
+                <condition number="259" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="35" hits="2" branch="False" />
+            <line number="36" hits="2" branch="False" />
+            <line number="37" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="425" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="38" hits="1" branch="False" />
+            <line number="39" hits="1" branch="False" />
+            <line number="40" hits="1" branch="False" />
+            <line number="41" hits="1" branch="False" />
+            <line number="43" hits="1" branch="False" />
+            <line number="44" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="533" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="45" hits="1" branch="False" />
+            <line number="46" hits="1" branch="False" />
+            <line number="47" hits="1" branch="False" />
+            <line number="48" hits="1" branch="False" />
+            <line number="49" hits="1" branch="False" />
+            <line number="50" hits="1" branch="False" />
+            <line number="51" hits="1" branch="False" />
+            <line number="52" hits="1" branch="False" />
+            <line number="53" hits="1" branch="False" />
+            <line number="54" hits="1" branch="False" />
+            <line number="55" hits="1" branch="False" />
+            <line number="56" hits="1" branch="False" />
+            <line number="57" hits="2" branch="False" />
+            <line number="58" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="812" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="59" hits="1" branch="False" />
+            <line number="60" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="833" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="61" hits="1" branch="False" />
+            <line number="63" hits="4" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="904" type="jump" coverage="100%" />
+                <condition number="916" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="64" hits="4" branch="False" />
+            <line number="65" hits="4" branch="False" />
+            <line number="66" hits="4" branch="False" />
+            <line number="67" hits="4" branch="False" />
+            <line number="68" hits="4" branch="False" />
+            <line number="69" hits="4" branch="False" />
+            <line number="70" hits="4" branch="False" />
+            <line number="71" hits="4" branch="False" />
+            <line number="72" hits="4" branch="False" />
+            <line number="74" hits="4" branch="False" />
+            <line number="76" hits="4" branch="False" />
+            <line number="78" hits="4" branch="False" />
+            <line number="79" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;FinishAnalysis&gt;d__6" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="102" hits="3" branch="False" />
+                <line number="103" hits="3" branch="False" />
+                <line number="104" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="175" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="106" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="226" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="107" hits="1" branch="False" />
+                <line number="108" hits="1" branch="False" />
+                <line number="111" hits="1" branch="False" />
+                <line number="114" hits="1" branch="False" />
+                <line number="116" hits="1" branch="False" />
+                <line number="117" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="102" hits="3" branch="False" />
+            <line number="103" hits="3" branch="False" />
+            <line number="104" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="175" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="106" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="226" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="107" hits="1" branch="False" />
+            <line number="108" hits="1" branch="False" />
+            <line number="111" hits="1" branch="False" />
+            <line number="114" hits="1" branch="False" />
+            <line number="116" hits="1" branch="False" />
+            <line number="117" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;GetOrder&gt;d__9" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="166" hits="2" branch="False" />
+                <line number="167" hits="2" branch="False" />
+                <line number="168" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="164" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="169" hits="1" branch="False" />
+                <line number="170" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="166" hits="2" branch="False" />
+            <line number="167" hits="2" branch="False" />
+            <line number="168" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="164" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="169" hits="1" branch="False" />
+            <line number="170" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceOrderController/&lt;RejectOrder&gt;d__8" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="144" hits="3" branch="False" />
+                <line number="145" hits="3" branch="False" />
+                <line number="146" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="189" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="148" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="239" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="149" hits="1" branch="False" />
+                <line number="150" hits="1" branch="False" />
+                <line number="153" hits="1" branch="False" />
+                <line number="154" hits="1" branch="False" />
+                <line number="156" hits="1" branch="False" />
+                <line number="159" hits="1" branch="False" />
+                <line number="161" hits="1" branch="False" />
+                <line number="162" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="144" hits="3" branch="False" />
+            <line number="145" hits="3" branch="False" />
+            <line number="146" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="189" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="148" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="239" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="149" hits="1" branch="False" />
+            <line number="150" hits="1" branch="False" />
+            <line number="153" hits="1" branch="False" />
+            <line number="154" hits="1" branch="False" />
+            <line number="156" hits="1" branch="False" />
+            <line number="159" hits="1" branch="False" />
+            <line number="161" hits="1" branch="False" />
+            <line number="162" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.CreateServiceOrderDto" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_Client" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="175" hits="32" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Vehicle" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="176" hits="19" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Services" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="177" hits="18" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Materials" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="178" hits="16" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="175" hits="32" branch="False" />
+            <line number="176" hits="19" branch="False" />
+            <line number="177" hits="18" branch="False" />
+            <line number="178" hits="16" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ClientDto" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="183" hits="16" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Identifier" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="184" hits="19" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Phone" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="185" hits="13" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Email" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="186" hits="13" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Address" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="187" hits="13" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="183" hits="16" branch="False" />
+            <line number="184" hits="19" branch="False" />
+            <line number="185" hits="13" branch="False" />
+            <line number="186" hits="13" branch="False" />
+            <line number="187" hits="13" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.VehicleDto" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="get_Brand" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="192" hits="11" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Model" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="193" hits="11" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Year" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="194" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Plate" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="195" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Color" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="196" hits="11" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="192" hits="11" branch="False" />
+            <line number="193" hits="11" branch="False" />
+            <line number="194" hits="2" branch="False" />
+            <line number="195" hits="17" branch="False" />
+            <line number="196" hits="11" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.ServiceDto" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="201" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Description" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="202" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Value" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="203" hits="8" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Quantity" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="204" hits="8" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="201" hits="6" branch="False" />
+            <line number="202" hits="6" branch="False" />
+            <line number="203" hits="8" branch="False" />
+            <line number="204" hits="8" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.MaterialDto" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\ServiceOrderController.cs" line-rate="1" branch-rate="1" complexity="5">
+          <methods>
+            <method name="get_Name" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="209" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Description" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="210" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Brand" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="211" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Value" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="212" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Quantity" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="213" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="209" hits="3" branch="False" />
+            <line number="210" hits="3" branch="False" />
+            <line number="211" hits="3" branch="False" />
+            <line number="212" hits="2" branch="False" />
+            <line number="213" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.UserController" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\UserController.cs" line-rate="1" branch-rate="0.5" complexity="7">
+          <methods>
+            <method name="GenerateToken" signature="(System.String,System.String)" line-rate="1" branch-rate="0.5" complexity="6">
+              <lines>
+                <line number="88" hits="1" branch="False" />
+                <line number="89" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="18" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="90" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="50" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="91" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="76" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="93" hits="1" branch="False" />
+                <line number="94" hits="1" branch="False" />
+                <line number="96" hits="1" branch="False" />
+                <line number="97" hits="1" branch="False" />
+                <line number="98" hits="1" branch="False" />
+                <line number="99" hits="1" branch="False" />
+                <line number="100" hits="1" branch="False" />
+                <line number="101" hits="1" branch="False" />
+                <line number="103" hits="1" branch="False" />
+                <line number="104" hits="1" branch="False" />
+                <line number="105" hits="1" branch="False" />
+                <line number="106" hits="1" branch="False" />
+                <line number="107" hits="1" branch="False" />
+                <line number="108" hits="1" branch="False" />
+                <line number="110" hits="1" branch="False" />
+                <line number="111" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.OSDbContext,Microsoft.Extensions.Configuration.IConfiguration)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="20" hits="8" branch="False" />
+                <line number="21" hits="8" branch="False" />
+                <line number="22" hits="8" branch="False" />
+                <line number="23" hits="8" branch="False" />
+                <line number="24" hits="8" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="88" hits="1" branch="False" />
+            <line number="89" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="18" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="90" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="50" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="91" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="76" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="93" hits="1" branch="False" />
+            <line number="94" hits="1" branch="False" />
+            <line number="96" hits="1" branch="False" />
+            <line number="97" hits="1" branch="False" />
+            <line number="98" hits="1" branch="False" />
+            <line number="99" hits="1" branch="False" />
+            <line number="100" hits="1" branch="False" />
+            <line number="101" hits="1" branch="False" />
+            <line number="103" hits="1" branch="False" />
+            <line number="104" hits="1" branch="False" />
+            <line number="105" hits="1" branch="False" />
+            <line number="106" hits="1" branch="False" />
+            <line number="107" hits="1" branch="False" />
+            <line number="108" hits="1" branch="False" />
+            <line number="110" hits="1" branch="False" />
+            <line number="111" hits="1" branch="False" />
+            <line number="20" hits="8" branch="False" />
+            <line number="21" hits="8" branch="False" />
+            <line number="22" hits="8" branch="False" />
+            <line number="23" hits="8" branch="False" />
+            <line number="24" hits="8" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.UserController/&lt;CreateUser&gt;d__4" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\UserController.cs" line-rate="0.8234999999999999" branch-rate="0.8332999999999999" complexity="6">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0.8234999999999999" branch-rate="0.8332999999999999" complexity="6">
+              <lines>
+                <line number="54" hits="3" branch="False" />
+                <line number="55" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="94" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="56" hits="1" branch="False" />
+                <line number="57" hits="1" branch="False" />
+                <line number="60" hits="2" branch="False" />
+                <line number="61" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="444" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="62" hits="1" branch="False" />
+                <line number="63" hits="1" branch="False" />
+                <line number="66" hits="1" branch="False" />
+                <line number="67" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="521" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="68" hits="0" branch="False" />
+                <line number="69" hits="0" branch="False" />
+                <line number="70" hits="0" branch="False" />
+                <line number="72" hits="1" branch="False" />
+                <line number="73" hits="1" branch="False" />
+                <line number="75" hits="1" branch="False" />
+                <line number="76" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="54" hits="3" branch="False" />
+            <line number="55" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="94" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="56" hits="1" branch="False" />
+            <line number="57" hits="1" branch="False" />
+            <line number="60" hits="2" branch="False" />
+            <line number="61" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="444" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="62" hits="1" branch="False" />
+            <line number="63" hits="1" branch="False" />
+            <line number="66" hits="1" branch="False" />
+            <line number="67" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="521" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="68" hits="0" branch="False" />
+            <line number="69" hits="0" branch="False" />
+            <line number="70" hits="0" branch="False" />
+            <line number="72" hits="1" branch="False" />
+            <line number="73" hits="1" branch="False" />
+            <line number="75" hits="1" branch="False" />
+            <line number="76" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.UserController/&lt;GetUsers&gt;d__5" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\UserController.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="81" hits="1" branch="False" />
+                <line number="82" hits="1" branch="False" />
+                <line number="83" hits="1" branch="False" />
+                <line number="84" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="81" hits="1" branch="False" />
+            <line number="82" hits="1" branch="False" />
+            <line number="83" hits="1" branch="False" />
+            <line number="84" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.UserController/&lt;Login&gt;d__3" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\UserController.cs" line-rate="1" branch-rate="0.875" complexity="8">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="0.875" complexity="8">
+              <lines>
+                <line number="29" hits="4" branch="False" />
+                <line number="30" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="69" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="31" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="36" hits="3" branch="False" />
+                <line number="37" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="429" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="2" branch="True" condition-coverage="75% (3/4)">
+                  <conditions>
+                    <condition number="456" type="jump" coverage="50%" />
+                    <condition number="497" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="40" hits="1" branch="False" />
+                <line number="41" hits="1" branch="False" />
+                <line number="44" hits="1" branch="False" />
+                <line number="45" hits="1" branch="False" />
+                <line number="48" hits="1" branch="False" />
+                <line number="49" hits="4" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="29" hits="4" branch="False" />
+            <line number="30" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="69" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="31" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="36" hits="3" branch="False" />
+            <line number="37" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="429" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="2" branch="True" condition-coverage="75% (3/4)">
+              <conditions>
+                <condition number="456" type="jump" coverage="50%" />
+                <condition number="497" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="40" hits="1" branch="False" />
+            <line number="41" hits="1" branch="False" />
+            <line number="44" hits="1" branch="False" />
+            <line number="45" hits="1" branch="False" />
+            <line number="48" hits="1" branch="False" />
+            <line number="49" hits="4" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Controllers.LoginRequest" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Controllers\UserController.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="get_Username" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="116" hits="15" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Password" signature="()" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="117" hits="11" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="116" hits="15" branch="False" />
+            <line number="117" hits="11" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.BudgetCreatedConsumer" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository,Microsoft.Extensions.Logging.ILogger`1&lt;FiapOficina.OSService.Api.Consumers.BudgetCreatedConsumer&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="13" hits="2" branch="False" />
+                <line number="14" hits="2" branch="False" />
+                <line number="15" hits="2" branch="False" />
+                <line number="16" hits="2" branch="False" />
+                <line number="17" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="2" branch="False" />
+            <line number="14" hits="2" branch="False" />
+            <line number="15" hits="2" branch="False" />
+            <line number="16" hits="2" branch="False" />
+            <line number="17" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.BudgetCreatedConsumer/&lt;Consume&gt;d__3" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="20" hits="2" branch="False" />
+                <line number="21" hits="2" branch="False" />
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="238" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+                <line number="26" hits="1" branch="False" />
+                <line number="27" hits="1" branch="False" />
+                <line number="28" hits="1" branch="False" />
+                <line number="29" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="2" branch="False" />
+            <line number="21" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="238" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="26" hits="1" branch="False" />
+            <line number="27" hits="1" branch="False" />
+            <line number="28" hits="1" branch="False" />
+            <line number="29" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.PaymentProcessedConsumer" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository,Microsoft.Extensions.Logging.ILogger`1&lt;FiapOficina.OSService.Api.Consumers.PaymentProcessedConsumer&gt;,MassTransit.IBus)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="38" hits="2" branch="False" />
+                <line number="39" hits="2" branch="False" />
+                <line number="40" hits="2" branch="False" />
+                <line number="41" hits="2" branch="False" />
+                <line number="42" hits="2" branch="False" />
+                <line number="43" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="38" hits="2" branch="False" />
+            <line number="39" hits="2" branch="False" />
+            <line number="40" hits="2" branch="False" />
+            <line number="41" hits="2" branch="False" />
+            <line number="42" hits="2" branch="False" />
+            <line number="43" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.PaymentProcessedConsumer/&lt;Consume&gt;d__4" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="46" hits="2" branch="False" />
+                <line number="47" hits="2" branch="False" />
+                <line number="48" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="197" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="49" hits="2" branch="False" />
+                <line number="50" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="223" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="51" hits="1" branch="False" />
+                <line number="52" hits="1" branch="False" />
+                <line number="53" hits="1" branch="False" />
+                <line number="54" hits="1" branch="False" />
+                <line number="55" hits="1" branch="False" />
+                <line number="57" hits="1" branch="False" />
+                <line number="58" hits="1" branch="False" />
+                <line number="59" hits="1" branch="False" />
+                <line number="62" hits="1" branch="False" />
+                <line number="63" hits="1" branch="False" />
+                <line number="64" hits="2" branch="False" />
+                <line number="65" hits="2" branch="False" />
+                <line number="66" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="46" hits="2" branch="False" />
+            <line number="47" hits="2" branch="False" />
+            <line number="48" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="197" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="49" hits="2" branch="False" />
+            <line number="50" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="223" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="51" hits="1" branch="False" />
+            <line number="52" hits="1" branch="False" />
+            <line number="53" hits="1" branch="False" />
+            <line number="54" hits="1" branch="False" />
+            <line number="55" hits="1" branch="False" />
+            <line number="57" hits="1" branch="False" />
+            <line number="58" hits="1" branch="False" />
+            <line number="59" hits="1" branch="False" />
+            <line number="62" hits="1" branch="False" />
+            <line number="63" hits="1" branch="False" />
+            <line number="64" hits="2" branch="False" />
+            <line number="65" hits="2" branch="False" />
+            <line number="66" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.ExecutionFinishedConsumer" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository,Microsoft.Extensions.Logging.ILogger`1&lt;FiapOficina.OSService.Api.Consumers.ExecutionFinishedConsumer&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="74" hits="2" branch="False" />
+                <line number="75" hits="2" branch="False" />
+                <line number="76" hits="2" branch="False" />
+                <line number="77" hits="2" branch="False" />
+                <line number="78" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="74" hits="2" branch="False" />
+            <line number="75" hits="2" branch="False" />
+            <line number="76" hits="2" branch="False" />
+            <line number="77" hits="2" branch="False" />
+            <line number="78" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.ExecutionFinishedConsumer/&lt;Consume&gt;d__3" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="4">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="4">
+              <lines>
+                <line number="81" hits="2" branch="False" />
+                <line number="82" hits="2" branch="False" />
+                <line number="83" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="183" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="84" hits="2" branch="False" />
+                <line number="85" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="209" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="86" hits="1" branch="False" />
+                <line number="87" hits="1" branch="False" />
+                <line number="88" hits="1" branch="False" />
+                <line number="89" hits="1" branch="False" />
+                <line number="91" hits="1" branch="False" />
+                <line number="92" hits="1" branch="False" />
+                <line number="93" hits="1" branch="False" />
+                <line number="94" hits="1" branch="False" />
+                <line number="95" hits="2" branch="False" />
+                <line number="96" hits="2" branch="False" />
+                <line number="97" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="81" hits="2" branch="False" />
+            <line number="82" hits="2" branch="False" />
+            <line number="83" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="183" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="84" hits="2" branch="False" />
+            <line number="85" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="209" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="86" hits="1" branch="False" />
+            <line number="87" hits="1" branch="False" />
+            <line number="88" hits="1" branch="False" />
+            <line number="89" hits="1" branch="False" />
+            <line number="91" hits="1" branch="False" />
+            <line number="92" hits="1" branch="False" />
+            <line number="93" hits="1" branch="False" />
+            <line number="94" hits="1" branch="False" />
+            <line number="95" hits="2" branch="False" />
+            <line number="96" hits="2" branch="False" />
+            <line number="97" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.OrderCancelledConsumer" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository,Microsoft.Extensions.Logging.ILogger`1&lt;FiapOficina.OSService.Api.Consumers.OrderCancelledConsumer&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="105" hits="1" branch="False" />
+                <line number="106" hits="1" branch="False" />
+                <line number="107" hits="1" branch="False" />
+                <line number="108" hits="1" branch="False" />
+                <line number="109" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="105" hits="1" branch="False" />
+            <line number="106" hits="1" branch="False" />
+            <line number="107" hits="1" branch="False" />
+            <line number="108" hits="1" branch="False" />
+            <line number="109" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.OrderCancelledConsumer/&lt;Consume&gt;d__3" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="112" hits="1" branch="False" />
+                <line number="113" hits="1" branch="False" />
+                <line number="114" hits="1" branch="False" />
+                <line number="115" hits="1" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="257" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="116" hits="1" branch="False" />
+                <line number="117" hits="1" branch="False" />
+                <line number="118" hits="1" branch="False" />
+                <line number="119" hits="1" branch="False" />
+                <line number="120" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="112" hits="1" branch="False" />
+            <line number="113" hits="1" branch="False" />
+            <line number="114" hits="1" branch="False" />
+            <line number="115" hits="1" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="257" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="116" hits="1" branch="False" />
+            <line number="117" hits="1" branch="False" />
+            <line number="118" hits="1" branch="False" />
+            <line number="119" hits="1" branch="False" />
+            <line number="120" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.ExecutionStartedConsumer" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="1">
+          <methods>
+            <method name=".ctor" signature="(FiapOficina.OSService.Api.Infrastructure.IServiceOrderRepository,Microsoft.Extensions.Logging.ILogger`1&lt;FiapOficina.OSService.Api.Consumers.ExecutionStartedConsumer&gt;)" line-rate="1" branch-rate="1" complexity="1">
+              <lines>
+                <line number="128" hits="1" branch="False" />
+                <line number="129" hits="1" branch="False" />
+                <line number="130" hits="1" branch="False" />
+                <line number="131" hits="1" branch="False" />
+                <line number="132" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="128" hits="1" branch="False" />
+            <line number="129" hits="1" branch="False" />
+            <line number="130" hits="1" branch="False" />
+            <line number="131" hits="1" branch="False" />
+            <line number="132" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="FiapOficina.OSService.Api.Consumers.ExecutionStartedConsumer/&lt;Consume&gt;d__3" filename="FiapOficina.OSService\src\FiapOficina.OSService.Api\Consumers\SagaConsumers.cs" line-rate="1" branch-rate="1" complexity="2">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="1" branch-rate="1" complexity="2">
+              <lines>
+                <line number="135" hits="1" branch="False" />
+                <line number="136" hits="1" branch="False" />
+                <line number="137" hits="1" branch="False" />
+                <line number="138" hits="1" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="238" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="139" hits="1" branch="False" />
+                <line number="140" hits="1" branch="False" />
+                <line number="141" hits="1" branch="False" />
+                <line number="142" hits="1" branch="False" />
+                <line number="143" hits="1" branch="False" />
+                <line number="144" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="135" hits="1" branch="False" />
+            <line number="136" hits="1" branch="False" />
+            <line number="137" hits="1" branch="False" />
+            <line number="138" hits="1" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="238" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="139" hits="1" branch="False" />
+            <line number="140" hits="1" branch="False" />
+            <line number="141" hits="1" branch="False" />
+            <line number="142" hits="1" branch="False" />
+            <line number="143" hits="1" branch="False" />
+            <line number="144" hits="1" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+    <package name="FiapOficina.ServiceDefaults" line-rate="0" branch-rate="0" complexity="18">
+      <classes>
+        <class name="Microsoft.Extensions.Hosting.Extensions" filename="FiapOficina.ServiceDefaults\Extensions.cs" line-rate="0" branch-rate="0" complexity="18">
+          <methods>
+            <method name="AddServiceDefaults" signature="(TBuilder)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+                <line number="25" hits="0" branch="False" />
+                <line number="27" hits="0" branch="False" />
+                <line number="29" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="53" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="30" hits="0" branch="False" />
+                <line number="31" hits="0" branch="False" />
+                <line number="32" hits="0" branch="False" />
+                <line number="33" hits="0" branch="False" />
+                <line number="34" hits="0" branch="False" />
+                <line number="35" hits="0" branch="False" />
+                <line number="36" hits="0" branch="False" />
+                <line number="44" hits="0" branch="False" />
+                <line number="45" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ConfigureOpenTelemetry" signature="(TBuilder)" line-rate="0" branch-rate="0" complexity="10">
+              <lines>
+                <line number="48" hits="0" branch="False" />
+                <line number="49" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="37" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="50" hits="0" branch="False" />
+                <line number="51" hits="0" branch="False" />
+                <line number="52" hits="0" branch="False" />
+                <line number="53" hits="0" branch="False" />
+                <line number="55" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="96" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="56" hits="0" branch="False" />
+                <line number="57" hits="0" branch="False" />
+                <line number="58" hits="0" branch="False" />
+                <line number="59" hits="0" branch="False" />
+                <line number="60" hits="0" branch="False" />
+                <line number="61" hits="0" branch="False" />
+                <line number="62" hits="0" branch="False" />
+                <line number="63" hits="0" branch="False" />
+                <line number="64" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="44" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="65" hits="0" branch="False" />
+                <line number="66" hits="0" branch="False" />
+                <line number="67" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="7" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="68" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="29" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="69" hits="0" branch="False" />
+                <line number="70" hits="0" branch="False" />
+                <line number="71" hits="0" branch="False" />
+                <line number="72" hits="0" branch="False" />
+                <line number="73" hits="0" branch="False" />
+                <line number="74" hits="0" branch="False" />
+                <line number="76" hits="0" branch="False" />
+                <line number="78" hits="0" branch="False" />
+                <line number="79" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="AddOpenTelemetryExporters" signature="(TBuilder)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="82" hits="0" branch="False" />
+                <line number="83" hits="0" branch="False" />
+                <line number="85" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="36" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="86" hits="0" branch="False" />
+                <line number="87" hits="0" branch="False" />
+                <line number="88" hits="0" branch="False" />
+                <line number="97" hits="0" branch="False" />
+                <line number="98" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="AddDefaultHealthChecks" signature="(TBuilder)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="101" hits="0" branch="False" />
+                <line number="102" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="30" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="103" hits="0" branch="False" />
+                <line number="104" hits="0" branch="False" />
+                <line number="106" hits="0" branch="False" />
+                <line number="107" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="MapDefaultEndpoints" signature="(Microsoft.AspNetCore.Builder.WebApplication)" line-rate="0" branch-rate="0" complexity="2">
+              <lines>
+                <line number="110" hits="0" branch="False" />
+                <line number="113" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="14" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="114" hits="0" branch="False" />
+                <line number="116" hits="0" branch="False" />
+                <line number="119" hits="0" branch="False" />
+                <line number="120" hits="0" branch="False" />
+                <line number="121" hits="0" branch="False" />
+                <line number="122" hits="0" branch="False" />
+                <line number="123" hits="0" branch="False" />
+                <line number="125" hits="0" branch="False" />
+                <line number="126" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+            <line number="25" hits="0" branch="False" />
+            <line number="27" hits="0" branch="False" />
+            <line number="29" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="53" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="30" hits="0" branch="False" />
+            <line number="31" hits="0" branch="False" />
+            <line number="32" hits="0" branch="False" />
+            <line number="33" hits="0" branch="False" />
+            <line number="34" hits="0" branch="False" />
+            <line number="35" hits="0" branch="False" />
+            <line number="36" hits="0" branch="False" />
+            <line number="44" hits="0" branch="False" />
+            <line number="45" hits="0" branch="False" />
+            <line number="48" hits="0" branch="False" />
+            <line number="49" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="37" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="50" hits="0" branch="False" />
+            <line number="51" hits="0" branch="False" />
+            <line number="52" hits="0" branch="False" />
+            <line number="53" hits="0" branch="False" />
+            <line number="55" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="96" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="56" hits="0" branch="False" />
+            <line number="57" hits="0" branch="False" />
+            <line number="58" hits="0" branch="False" />
+            <line number="59" hits="0" branch="False" />
+            <line number="60" hits="0" branch="False" />
+            <line number="61" hits="0" branch="False" />
+            <line number="62" hits="0" branch="False" />
+            <line number="63" hits="0" branch="False" />
+            <line number="64" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="44" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="65" hits="0" branch="False" />
+            <line number="66" hits="0" branch="False" />
+            <line number="67" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="7" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="68" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="29" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="69" hits="0" branch="False" />
+            <line number="70" hits="0" branch="False" />
+            <line number="71" hits="0" branch="False" />
+            <line number="72" hits="0" branch="False" />
+            <line number="73" hits="0" branch="False" />
+            <line number="74" hits="0" branch="False" />
+            <line number="76" hits="0" branch="False" />
+            <line number="78" hits="0" branch="False" />
+            <line number="79" hits="0" branch="False" />
+            <line number="82" hits="0" branch="False" />
+            <line number="83" hits="0" branch="False" />
+            <line number="85" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="36" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="86" hits="0" branch="False" />
+            <line number="87" hits="0" branch="False" />
+            <line number="88" hits="0" branch="False" />
+            <line number="97" hits="0" branch="False" />
+            <line number="98" hits="0" branch="False" />
+            <line number="101" hits="0" branch="False" />
+            <line number="102" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="30" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="103" hits="0" branch="False" />
+            <line number="104" hits="0" branch="False" />
+            <line number="106" hits="0" branch="False" />
+            <line number="107" hits="0" branch="False" />
+            <line number="110" hits="0" branch="False" />
+            <line number="113" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="14" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="114" hits="0" branch="False" />
+            <line number="116" hits="0" branch="False" />
+            <line number="119" hits="0" branch="False" />
+            <line number="120" hits="0" branch="False" />
+            <line number="121" hits="0" branch="False" />
+            <line number="122" hits="0" branch="False" />
+            <line number="123" hits="0" branch="False" />
+            <line number="125" hits="0" branch="False" />
+            <line number="126" hits="0" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
